@@ -6,6 +6,7 @@
 // 64 bits. Add delays throughout (same convention as cla4.v) so it can be
 // fairly compared against rca64.v and cla64_blocked.v.
 
+
 module cla64_flat(
   input  [63:0] a,
   input  [63:0] b,
