@@ -29,6 +29,7 @@ module tb;
     end
   end
 
+
   initial begin
     t_a = 4'b0000; t_b = 4'b0000; t_cin = 0;
     #20 t_a = 4'b0111; t_b = 4'b0001; t_cin = 0;   // carry ripples through c1,c2,c3
@@ -42,3 +43,4 @@ module tb;
     $monitor($time, " a=%b b=%b cin=%b | sum=%b cout=%b", t_a, t_b, t_cin, t_sum, t_cout);
 
 endmodule
+
