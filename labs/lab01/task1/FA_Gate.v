@@ -14,7 +14,6 @@ module FA_Gate(
   output sum,
   output cout
 );
-
   wire ps, pc1, pc2;
 and (pc1, a, b);
 and (pc2, ps, cin);
