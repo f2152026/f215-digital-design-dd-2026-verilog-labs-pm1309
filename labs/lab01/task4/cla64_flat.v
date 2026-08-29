@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 // cla64_flat.v
 // A flat, unblocked 64-bit carry-lookahead adder: every carry is computed
 // directly (two-level, no rippling), exactly like cla4.v, just scaled to
@@ -61,11 +63,22 @@ module cla64_flat(
   //
   // TODO: paste your verified assign statements for c[1] through c[64] here.
 
+  wire [64:0] full_c;
+  assign full_c[0] = cin;
+
+  genvar k;
+  generate
+    for (k = 0; k < 64; k = k + 1) begin : gen_carries
+      assign #(2) full_c[k+1] = g[k] | (p[k] & full_c[k]);
+      assign c[k+1] = full_c[k+1];
+    end
+  endgenerate
+
   assign cout = c[64];
 
   // ---------------------------------------------------------------------
   // Step 3: sum bits
   // ---------------------------------------------------------------------
-  // TODO: assign #(2) sum = p ^ {c[63:1], cin};
+  assign #(2) sum = p ^ full_c[63:0];
 
 endmodule

@@ -16,15 +16,35 @@
 //     end
 //   endgenerate
 //   assign cout = c[64];
+// rca64.v
+// 64-bit Ripple Carry Adder built using 1-bit full adders (FA_Gate)
 
-module rca64(
-  input  [63:0] a,
-  input  [63:0] b,
-  input         cin,
-  output [63:0] sum,
-  output        cout
+module rca64 (
+    input  [63:0] a,
+    input  [63:0] b,
+    input         cin,
+    output [63:0] sum,
+    output        cout
 );
 
-  // TODO: your 64-bit ripple-carry structure goes here.
+    wire [64:0] c;
+    assign c[0] = cin;
+
+    genvar i;
+    generate
+        for (i = 0; i < 64; i = i + 1) begin : gen_fa
+            FA_Gate FA (
+                .a   (a[i]),
+                .b   (b[i]),
+                .cin (c[i]),
+                .sum (sum[i]),
+                .cout(c[i+1])
+            );
+        end
+    endgenerate
+
+    assign cout = c[64];
 
 endmodule
+  // TODO: your 64-bit ripple-carry structure goes here.
+
