@@ -21,6 +21,7 @@ module cla4_dataflow(
   output       cout
 );
 
+
   wire [3:0] p, g;
   wire c1, c2, c3;
 
