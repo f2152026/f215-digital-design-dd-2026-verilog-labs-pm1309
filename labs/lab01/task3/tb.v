@@ -16,8 +16,11 @@ module tb;
     .sum  (t_sum),
     .cout (t_cout)
   );
+  
 
   // Waveform dump configuration
+
+  
   string vcd_file;
   initial begin
     if ($value$plusargs("vcd=%s", vcd_file)) begin

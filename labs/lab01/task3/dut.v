@@ -14,6 +14,7 @@ module dut(
 );
 
   // ---- Option 1: delayed ripple-carry adder ----
+  
   rca U_IMPL (.a(a), .b(b), .cin(cin), .sum(sum), .cout(cout));
 
   // ---- Option 2: gate-level carry-lookahead adder ----
@@ -23,3 +24,4 @@ module dut(
   // cla4_dataflow U_IMPL (.a(a), .b(b), .cin(cin), .sum(sum), .cout(cout));
 
 endmodule
+
